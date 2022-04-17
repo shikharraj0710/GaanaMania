@@ -108,18 +108,11 @@ songItemPlay.forEach((element) => {
         songIndex = e.target.parentNode.parentNode.parentNode.childNodes[1].alt;
         //console.log("inside songItemplay", songIndex)
        // console.log(audioElement.duration)
+       
         if (audioElement.paused) {
-            //console.log("yes")
+            console.log("yes, start playing the song")
             e.target.classList.remove('fa-play-circle');
             e.target.classList.add('fa-pause-circle');
-            audioElement.src = `songs/${songIndex}.mp3`;
-            masterSongName.innerText = songs[songIndex - 1].songName;
-            audioElement.currentTime = 0;
-            audioElement.play();
-            gif.style.opacity = 1;
-            masterPlay.classList.remove('fa-play-circle');
-            masterPlay.classList.add('fa-pause-circle');
-            //console.log("playing")
         }
        
         else {
@@ -129,16 +122,31 @@ songItemPlay.forEach((element) => {
             masterPlay.classList.remove('fa-pause-circle')
             masterPlay.classList.add('fa-play-circle')
             gif.style.opacity = 0;
-            //console.log(songIndex)
-            console.log("paused")
+            //console.log(songIndex);
+            //console.log("paused");
         }
+
+        audioElement.src = `songs/${songIndex}.mp3`;
+        masterSongName.innerText = songs[songIndex - 1].songName;
+        audioElement.currentTime = 0;
+        audioElement.play();
+        gif.style.opacity = 1;
+        masterPlay.classList.remove('fa-play-circle');
+        masterPlay.classList.add('fa-pause-circle');
+        //console.log("playing");
+        e.target.classList.remove('fa-play-circle');
+        e.target.classList.add('fa-pause-circle');
+
     })
 })
 
 
 //console.log("prev",songIndex)
 //Play the next song
-next.addEventListener('click', () => {
+
+
+next.addEventListener("click", ()=>{
+
     console.log("index",songIndex)
     // whichSongIsPlaying();
     if (songIndex >= 10) {
@@ -163,8 +171,7 @@ next.addEventListener('click', () => {
     songItems[songIndex - 1].childNodes[5].childNodes[0].childNodes[1].classList.remove('fa-play-circle')
     songItems[songIndex - 1].childNodes[5].childNodes[0].childNodes[1].classList.add('fa-pause-circle')
 
-
-})
+});
 
 //Play the previous song
 previous.addEventListener('click', () => {
@@ -186,4 +193,26 @@ previous.addEventListener('click', () => {
     songItems[songIndex-1].childNodes[5].childNodes[0].childNodes[1].classList.add('fa-pause-circle')
 })
 
-//console.log(songItems[songIndex-1])
+
+//Play Next Song Automatically
+ audioElement.addEventListener("ended", function(){
+    
+    console.log(songIndex,"ended");
+    if (songIndex >= 10) {
+        songIndex = 1;
+        console.log("next", songIndex)
+    }
+    else {
+        songIndex++;
+    }
+    makeAllPlays();
+    audioElement.src = `songs/${songIndex}.mp3`;
+    masterSongName.innerText = songs[songIndex - 1].songName;
+    audioElement.currentTime = 0;
+    audioElement.play();
+    masterPlay.classList.remove('fa-play-circle');
+    masterPlay.classList.add('fa-pause-circle');
+    
+    songItems[songIndex-1].childNodes[5].childNodes[0].childNodes[1].classList.remove('fa-play-circle')
+    songItems[songIndex-1].childNodes[5].childNodes[0].childNodes[1].classList.add('fa-pause-circle')
+}); 
