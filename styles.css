@@ -23,18 +23,29 @@ nav ul{
     list-style-type: none;
     background: black;
     height: 3rem;
+    justify-content: space-between;
 }
 
 nav ul li{
     color: blanchedalmond;
     padding: 0 1rem;
     font-weight: bolder;
+    height: inherit;
+    display: flex;
+    align-items: center;
+}
+
+
+nav ul li.nav-heading{
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
 nav ul li:hover{
-    background: rgb(250, 250, 246);
     color: rgb(17, 16, 16);
+    background: rgb(250, 250, 246);
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .brand img{
@@ -52,6 +63,7 @@ nav ul li:hover{
 
 .tooltipContainer{
     position: relative;
+    letter-spacing: 2px;
 }
 
 .tooltipContainer .tooltip {
@@ -66,6 +78,7 @@ nav ul li:hover{
     border-radius: 0.6rem;
     color: wheat;
     z-index: 1;
+    letter-spacing: 1px;
 }   
 
 .tooltipContainer .tooltip::after {
@@ -110,9 +123,11 @@ nav ul li:hover{
     align-items: center;
     flex-direction: column;
 }
+
 .bottom:hover {
     border-top: 3px solid white;
 }
+
 .icons{
     margin: 0.5rem ;
 }
@@ -158,13 +173,13 @@ nav ul li:hover{
 .songItem:hover > .songName {
     text-decoration: underline;
 }
+
 .songItem img{
     height: inherit;
     /* padding-left: 0.4rem; */
     margin: 0 0.3rem;
     border-radius: inherit;   
 }
-
 
 .timeStamp i{
     cursor: pointer;
@@ -196,10 +211,11 @@ span.timeStamp {
 }
 
 i:hover {
-    transform: scale(1.2,1.2);
+    transform: scale(1.2, 1.2);
     box-shadow: rgba(233, 224, 224, 0.35) 0px 5px 15px;
     border-radius: 100%;
 }
+
 
 @media screen and (max-width: 1041px) {
     .container {
@@ -217,6 +233,9 @@ i:hover {
     }
     .songList h1 {
         text-align: center;
+    }
+    .songInfo {
+        position: static;
     }
 }
 
@@ -237,7 +256,7 @@ i:hover {
         padding: 0;
     }
     .songItem {
-        min-height: 5%;
+        min-height: 4em;
     }
     span.timeStamp {
         margin: 0;
