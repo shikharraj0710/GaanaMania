@@ -47,7 +47,7 @@ nav ul li:hover{
     align-items: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
-    font-size: 1.2rem;
+    font-size: 1.2em;
 } 
 
 .tooltipContainer{
@@ -95,21 +95,24 @@ nav ul li:hover{
     background-size: cover;
     background-position: 6vw;
     box-sizing: border-box;
+    font-size: 32px;
     
 } 
 
 .bottom{
     position: sticky;
+    bottom: 0;
     background: black;
     color: blanchedalmond;
-    /* height: 133px; */
-    bottom: 0;
+    padding: 0.5rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-
+.bottom:hover {
+    border-top: 3px solid white;
+}
 .icons{
     margin: 0.5rem ;
 }
@@ -125,12 +128,13 @@ nav ul li:hover{
 
 .songList h1{
     margin-bottom: 1rem;
-    font-size: 2rem;
+    font-size: 1em;
     font-weight: bolder;
 }
 
 .songItemContainer{
     margin-left: 2.5rem;
+    font-size: 0.5em;
 }
 
 .songItem{
@@ -139,7 +143,6 @@ nav ul li:hover{
     border: 2px solid white;
     border-radius: 2rem;
     font-family: 'Libre Baskerville', serif;
-    /* width: 80%; */
     margin: 1rem 0;
     color: black;
     display: flex;
@@ -152,6 +155,9 @@ nav ul li:hover{
     color: white;
 }
 
+.songItem:hover > .songName {
+    text-decoration: underline;
+}
 .songItem img{
     height: inherit;
     /* padding-left: 0.4rem; */
@@ -162,10 +168,12 @@ nav ul li:hover{
 
 .timeStamp i{
     cursor: pointer;
+    margin-left: 0.3rem;
 }
 
 span.timeStamp {
     margin: 1.5rem;
+    display: flex;
 }
 
 .songInfo{
@@ -182,4 +190,59 @@ span.timeStamp {
 
 .songName{
     font-weight: bolder;
+    max-width: 60%;
+    text-align: center;
+    padding: 0.7rem;
+}
+
+i:hover {
+    transform: scale(1.2,1.2);
+    box-shadow: rgba(233, 224, 224, 0.35) 0px 5px 15px;
+    border-radius: 100%;
+}
+
+@media screen and (max-width: 1041px) {
+    .container {
+        background-position: 0;
+        background-size: 100% 100%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .container {
+        background-image: none;
+    }
+    .songItemContainer {
+        margin: auto;
+    }
+    .songList h1 {
+        text-align: center;
+    }
+}
+
+@media  screen and (max-width: 350px) {
+    span.timeStamp {
+        font-size: 0;
+    }
+    span.timeStamp i {
+        font-size: initial;
+    }
+    .songItem {
+        padding: 0.4rem;
+    }
+} 
+
+@media  screen and (max-width: 440px) {
+    .songName {
+        padding: 0;
+    }
+    .songItem {
+        min-height: 5%;
+    }
+    span.timeStamp {
+        margin: 0;
+    }
+    .songInfo img {
+        display: none;
+    }
 }
