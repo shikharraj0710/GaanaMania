@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+} 
+
+body{
+    background: rgba(116, 252, 195, 0.897);
+    font-family: 'Fira Sans', sans-serif;
+}
+
+nav{
+    font-family: 'Fira Sans', sans-serif;
+    height: 10vh;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    background: black;
+    height: 3rem;
+}
+
+nav ul li{
+    color: blanchedalmond;
+    padding: 0 1rem;
+    font-weight: bolder;
+}
+
+nav ul li:hover{
+    background: rgb(250, 250, 246);
+    color: rgb(17, 16, 16);
+    cursor: pointer;
+}
+
+.brand img{
+    width: 2.5rem;
+    padding-top: 0.25rem;  
+}
+
+.brand{
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    font-size: 1.2rem;
+} 
+
+.tooltipContainer{
+    position: relative;
+}
+
+.tooltipContainer .tooltip {
+    display: none;
+    color: blue;
+    position: absolute;
+    font-size: 1rem;
+    top: 178%;
+    left: 0%;
+    background: black;
+    padding: 0.3rem;
+    border-radius: 0.6rem;
+    color: wheat;
+    z-index: 1;
+}   
+
+.tooltipContainer .tooltip::after {
+    content: "";
+    position: absolute; 
+    bottom: 100%;
+    right: 45%;
+    border-width: 0.4rem;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.brand:hover .tooltip{
+      display: initial;
+}
+
+.container{
+    min-height: 75vh;
+    background: black;
+    color: blanchedalmond;
+    display: flex;
+    width: 70%;
+    margin: 1rem auto;
+    border-radius: 1rem;
+    padding: 1rem;
+    background-image: url("bg2.jpg");
+    background-size: cover;
+    background-position: 6vw;
+    box-sizing: border-box;
+    
+} 
+
+.bottom{
+    position: sticky;
+    background: black;
+    color: blanchedalmond;
+    /* height: 133px; */
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.icons{
+    margin: 0.5rem ;
+}
+
+.icons i{
+    cursor: pointer;
+}
+
+#myProgressBar{
+    width: 80vw;
+    cursor: pointer;
+}
+
+.songList h1{
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.songItemContainer{
+    margin-left: 2.5rem;
+}
+
+.songItem{
+    height: 6vh;
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 2rem;
+    font-family: 'Libre Baskerville', serif;
+    /* width: 80%; */
+    margin: 1rem 0;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.songItem:hover{
+    background: black;
+    color: white;
+}
+
+.songItem img{
+    height: inherit;
+    /* padding-left: 0.4rem; */
+    margin: 0 0.3rem;
+    border-radius: inherit;   
+}
+
+
+.timeStamp i{
+    cursor: pointer;
+}
+
+span.timeStamp {
+    margin: 1.5rem;
+}
+
+.songInfo{
+    position: absolute;
+    left: 10vw;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.songInfo img{
+    padding-right: 0.4rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.songName{
+    font-weight: bolder;
+}
