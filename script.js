@@ -31,7 +31,6 @@ let songs = [
 songItems.forEach((element, i) => {
     element.getElementsByTagName("img")[0].src = songs[i].coverPath;
     element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
-    //element.getElementsByClassName("timeStamp")[0].innerText = so
 })
 
 
@@ -41,19 +40,17 @@ audioElement.src = songs[songIndex - 1].filePath;
 
 
 const whichSongIsPlaying = () => {
-   // console.log(audioElement.getAttribute("src"))
+    
     let source = audioElement.getAttribute("src")
     var matches = source.match(/(\d+)/);
-    //console.log("yo", matches[0])
     songIndex = matches[0]
     return songIndex
-    //console.log(songItems[songIndex - 1].childNodes[5].childNodes[0].childNodes[1].classList)
+    
 }
 
 //Updating the Masterplay
 masterPlay.addEventListener("click", () => {
     songIndex = whichSongIsPlaying();
-    console.log("inside masterplay whichsongisplaying", whichSongIsPlaying())
     let playPauseBtn = songItems[songIndex - 1].childNodes[5].childNodes[0].childNodes[1];
     if (audioElement.paused || audioElement.currentTime <= 0) {
         audioElement.play();
@@ -104,26 +101,26 @@ const makeAllPlays = () => {
 //Then, we would want that particular song to play(remove play class and add pause class).
 songItemPlay.forEach((element) => {
     element.addEventListener('click', (e) => {
-        makeAllPlays();
+        
+        var currentSong = whichSongIsPlaying()
         songIndex = e.target.parentNode.parentNode.parentNode.childNodes[1].alt;
-        //console.log("inside songItemplay", songIndex)
-       // console.log(audioElement.duration)
        
         if (audioElement.paused) {
-            console.log("yes, start playing the song")
             e.target.classList.remove('fa-play-circle');
             e.target.classList.add('fa-pause-circle');
         }
        
         else {
+            makeAllPlays();
             audioElement.pause()
             e.target.classList.remove('fa-pause-circle')
             e.target.classList.add('fa-play-circle')
             masterPlay.classList.remove('fa-pause-circle')
             masterPlay.classList.add('fa-play-circle')
             gif.style.opacity = 0;
-            //console.log(songIndex);
-            //console.log("paused");
+             if(currentSong == songIndex) {
+                return;
+            }
         }
 
         audioElement.src = `songs/${songIndex}.mp3`;
@@ -133,7 +130,6 @@ songItemPlay.forEach((element) => {
         gif.style.opacity = 1;
         masterPlay.classList.remove('fa-play-circle');
         masterPlay.classList.add('fa-pause-circle');
-        //console.log("playing");
         e.target.classList.remove('fa-play-circle');
         e.target.classList.add('fa-pause-circle');
 
@@ -141,24 +137,16 @@ songItemPlay.forEach((element) => {
 })
 
 
-//console.log("prev",songIndex)
 //Play the next song
-
-
 next.addEventListener("click", ()=>{
 
-    console.log("index",songIndex)
-    // whichSongIsPlaying();
     if (songIndex >= 10) {
         songIndex = 1;
-        console.log("next", songIndex)
     }
     else {
-        //console.log("inside else: adding 1==",songIndex)
         songIndex++;
     }
     
-    console.log("after updating",songIndex)
     makeAllPlays();
     audioElement.src = `songs/${songIndex}.mp3`;
     masterSongName.innerText = songs[songIndex - 1].songName;
@@ -166,8 +154,6 @@ next.addEventListener("click", ()=>{
     audioElement.play();
     masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
-    //console.log("current song playing:::",songIndex)
-    //console.log(songItems[songIndex-1].childNodes[5].childNodes[0].childNodes[1].classList)
     songItems[songIndex - 1].childNodes[5].childNodes[0].childNodes[1].classList.remove('fa-play-circle')
     songItems[songIndex - 1].childNodes[5].childNodes[0].childNodes[1].classList.add('fa-pause-circle')
 
@@ -197,14 +183,13 @@ previous.addEventListener('click', () => {
 //Play Next Song Automatically
  audioElement.addEventListener("ended", function(){
     
-    console.log(songIndex,"ended");
     if (songIndex >= 10) {
         songIndex = 1;
-        console.log("next", songIndex)
     }
     else {
         songIndex++;
     }
+     
     makeAllPlays();
     audioElement.src = `songs/${songIndex}.mp3`;
     masterSongName.innerText = songs[songIndex - 1].songName;
