@@ -14,7 +14,7 @@ body{
 
 nav{
     font-family: 'Fira Sans', sans-serif;
-    height: 10vh;
+    overflow: auto;
 }
 
 nav ul{
@@ -163,6 +163,7 @@ nav ul li:hover{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }
 
 .songItem:hover{
@@ -263,5 +264,22 @@ i:hover {
     }
     .songInfo img {
         display: none;
+    }
+}
+@media screen and (max-width: 400px) {
+    .brand + .nav-heading { /*  Adjacent Sibling Selector */
+        display: none;
+    }
+    .songName {
+        overflow: scroll;
+        max-height: 70%;
+    }
+}
+@media screen and (max-width: 290px){
+    .nav-heading {
+        display: none;
+    }
+    nav ul {
+        justify-content: center;
     }
 }
